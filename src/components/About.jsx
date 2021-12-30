@@ -1,14 +1,20 @@
 import React from "react";
 import { useRef } from "react";
+import { useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import '../../src/index.css';
 
 
 
 
 const Message = () => {
-  //const [messageObj, setMessage] = useState({ message: "", id: 1 });
+
+
+ 
   const inputFrase = useRef(null);
   const resultadoMimi = useRef(null);
+
+
   const hacerMagia = () => {
     let valorInput = inputFrase.current.value;
     let updateFrase = valorInput.replace(/[aeouáéíóúAEOUÁÉÓÚ]/g, 'i');
@@ -18,11 +24,17 @@ const Message = () => {
     //alert(updateFrase);
   };
 
+  const copyToClipboard = () => {
+    resultadoMimi.current.select();
+    document.execCommand('copy');
+  };
+
+
   return (
     <div>
 
-<div className="bg-white dark:bg-gray-800">
-    <div class="lg:flex lg:items-center lg:justify-between w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+<div className="bg-white">
+    <div className="lg:flex lg:items-center lg:justify-between w-full mx-auto pt-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
         <h1>Traductor Mimi</h1>
         <h2 className="text-2xl font-extrabold text-black dark:text-white sm:text-4xl">
             <span className="block">
@@ -45,30 +57,25 @@ const Message = () => {
       
 <div className="flex justify-end">
 <button type="button" onClick={hacerMagia} className="self-end mt-4 py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-    boton magico
+    clic magico
 </button> 
-</div>
-     
-      <p ref={resultadoMimi}> </p>
+</div>  
 
-
-<div className="bg-lightblue py-20 px-4">
-    <div className="mx-auto max-w-6xl flex flex-col md:flex-row">
-        
-        <dl className="w-full md:w-2/3">
-            <dt className="mb-4">
-                <h3 className="text-xl font-semibold" ref={resultadoMimi}>
-                    Aqui aparecera el texto!
-                </h3>
-            </dt>       
-            
-        </dl>
+<div className="container mt-8">
+    <textarea 
+    ref={resultadoMimi}  
+    className="w-full resize-none rounded-lg border-transparent flex-1 appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
+    placeholder="aqui aparecera tu frase a copiar"/>    
     </div>
-</div>
+
+    <div className="flex justify-end">
+<button type="button" 
+onClick={copyToClipboard} 
+className="self-end mt-4 py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
+    Copiar Texto
+</button> 
+</div>  
 </section>
-
-
-
 
 <footer className="mt-16 px-3 py-8 bg-white dark:bg-gray-800 text-2 text-gray-500 dark:text-gray-200 transition-colors duration-200">
     <div className="flex flex-col">

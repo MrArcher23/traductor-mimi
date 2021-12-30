@@ -21,6 +21,7 @@
   "homepage": "https://github.com/MrArcher23/traductor-mimi#readme",
   "dependencies": {
     "react": "^17.0.2",
+    "react-copy-to-clipboard": "^5.0.4",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
