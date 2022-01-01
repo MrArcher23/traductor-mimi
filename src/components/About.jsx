@@ -9,7 +9,6 @@ import '../../src/index.css';
 
 const Message = () => {
 
-
  
   const inputFrase = useRef(null);
   const resultadoMimi = useRef(null);
@@ -19,9 +18,7 @@ const Message = () => {
     let valorInput = inputFrase.current.value;
     let updateFrase = valorInput.replace(/[aeouáéíóúAEOUÁÉÓÚ]/g, 'i');
     resultadoMimi.current.innerHTML = updateFrase;
-    inputFrase.current.value = '';
-
-    //alert(updateFrase);
+    inputFrase.current.value = '';    
   };
 
   const copyToClipboard = () => {
@@ -34,21 +31,21 @@ const Message = () => {
     <div>
 
 <div className="bg-white">
-    <div className="lg:flex lg:items-center lg:justify-between w-full mx-auto pt-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
+    <div className="text-center w-full mx-auto pt-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
         <h1>Traductor Mimi</h1>
-        <h2 className="text-2xl font-extrabold text-black dark:text-white sm:text-4xl">
+        <h2 className="text-2xl font-extrabold text-black sm:text-4xl">
             <span className="block">
                 Pega o escribe la frase,
             </span>
             <span className="block text-indigo-500">
-                burlate del llorón! xD
+                burlate un ratillo! xD
             </span>
         </h2>
         
     </div>
 </div>
 
-<section className="w-full mx-auto py-12 px-4">
+<section className="xl:w-2/5 lg:w-2/5 mx-auto py-12 px-4">
 <div className="container">
     <textarea ref={inputFrase} className="w-full resize-none rounded-lg border-transparent flex-1 appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Escribe la frase mamadora"/>
     </div>
@@ -77,7 +74,7 @@ className="self-end mt-4 py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring
 </div>  
 </section>
 
-<footer className="mt-16 px-3 py-8 bg-white dark:bg-gray-800 text-2 text-gray-500 dark:text-gray-200 transition-colors duration-200">
+<footer className="xl:w-2/5 lg:w-2/5 ">
     <div className="flex flex-col">
         <div className="md:hidden mt-7 mx-auto w-11 h-px rounded-full">
         </div>
