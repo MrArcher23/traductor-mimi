@@ -1,13 +1,25 @@
 import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import { ToastContainer, toast } from 'react-toastify';
+import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../../src/index.css';
 
 
 
 
 const Message = () => {
+
+    const showToast = () => {
+        let myMsg = 'Texto Copiado!'
+        toast.success(myMsg, {
+        position: toast.POSITION.TOP_CENTER,
+        toastId: '001',
+        autoClose: 3000,
+        transition: Zoom
+      })
+      };
 
  
   const inputFrase = useRef(null);
@@ -37,7 +49,7 @@ const Message = () => {
             <span className="block">
                 Pega o escribe la frase,
             </span>
-            <span className="block text-indigo-500">
+            <span className="block text-sky-700">
                 burlate un ratillo! xD
             </span>
         </h2>
@@ -45,7 +57,7 @@ const Message = () => {
     </div>
 </div>
 
-<section className="xl:w-2/5 lg:w-2/5 mx-auto py-12 px-4">
+<section className="xl:w-2/5 lg:w-2/5 md:w-2/5 mx-auto py-12 px-4">
 <div className="container">
     <textarea ref={inputFrase} className="w-full resize-none rounded-lg border-transparent flex-1 appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Escribe la frase mamadora"/>
     </div>
@@ -53,7 +65,7 @@ const Message = () => {
 
       
 <div className="flex justify-end">
-<button type="button" onClick={hacerMagia} className="self-end mt-4 py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+<button type="button" onClick={hacerMagia} className="self-end mt-4 py-2 px-4 bg-sky-700 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
     Clic Magico
 </button> 
 </div>  
@@ -61,20 +73,24 @@ const Message = () => {
 <div className="container mt-8">
     <textarea 
     ref={resultadoMimi}  
-    className="w-full resize-none rounded-lg border-transparent flex-1 appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" 
-    placeholder="aqui aparecera tu frase a copiar"/>    
+    className="w-full resize-none rounded-lg border-transparent flex-1 appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-sky-600 focus:border-transparent" 
+    placeholder="Aqui aparecera tu frase a copiar"/>    
     </div>
 
     <div className="flex justify-end">
 <button type="button" 
-onClick={copyToClipboard} 
-className="self-end mt-4 py-2 px-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
-    Copiar Texto
+onClick={() =>{
+    copyToClipboard();
+    showToast();
+}} 
+className="self-end mt-4 py-2 px-4  bg-sky-700 hover:bg-sky-700 focus:ring-sky-500 focus:ring-offset-sky-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg">
+    Copiar Texto 
 </button> 
+<ToastContainer />
 </div>  
 </section>
 
-<footer className="xl:w-2/5 lg:w-2/5 ">
+<footer className="xl:w-2/5 lg:w-2/5">
     <div className="flex flex-col">
         <div className="md:hidden mt-7 mx-auto w-11 h-px rounded-full">
         </div>
